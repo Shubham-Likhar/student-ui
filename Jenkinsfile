@@ -24,7 +24,7 @@ pipeline {
                 sudo ./aws/install
                 '''
                 sh '''                
-                aws s3 cp studentapp-2.2-SNAPSHOT.war s3://dev-artifact-upload/
+                aws s3 cp /var/lib/jenkins/workspace/pipeline1/target/studentapp-2.2-SNAPSHOT.war s3://dev-artifact-upload/
                 '''
             }
         }
