@@ -16,6 +16,18 @@ pipeline {
             }
         }
         
+          stage("push-artifact"){
+            steps {
+                sh '''
+                curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+                unzip awscliv2.zip  
+                sudo ./aws/install
+                '''
+                sh '''                
+                aws s3 cp studentapp-2.2-SNAPSHOT.war s3://dev-artifact-upload/
+                '''
+            }
+        }
        
         
     }
