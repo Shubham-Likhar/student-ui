@@ -1,0 +1,22 @@
+pipeline {
+    
+    stages {
+        stage("git-checkout"){
+            steps {
+               sh 'sudo apt-get update -y'
+               sh 'sudo apt-get install git -y'
+               git credentialsId: '5d203d0e-2f73-41c1-af62-6490f7fa17fc', url: 'git@github.com:atulyw/student-ui.git'  
+            }
+        }
+        stage("build-mvn"){
+            steps {
+                sh 'sudo apt-get update -y'
+                sh 'sudo apt-get install maven unzip curl -y'
+                sh 'mvn clean package'
+            }
+        }
+        
+       
+        
+    }
+}
